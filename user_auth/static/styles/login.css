@@ -1,0 +1,191 @@
+@font-face {
+    font-family: Bisdak;
+    src: url("../fonts/bisdak/Bisdak.ttf");
+}
+
+@font-face {
+    font-family: bantayog;
+    src: url("../fonts/bantayog/Bantayog-Semilight.otf");
+}
+
+@font-face {
+    font-family: glacial;
+    src: url("../fonts/glacial-indifference/GlacialIndifference-Regular.otf");
+}
+
+
+body {
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For WebKit browsers (Safari, Chrome) */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+/* General Body Style */
+
+body.bg {
+    background-color: #FFFDE4;
+    margin: 0;
+    padding: 0;
+    font-family: 'glacial', sans-serif;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 60px;
+}
+
+.logo-text {
+    margin-left: 15px;
+}
+
+.logo-text h2 {
+    font-size: 1rem;
+    font-family: 'Bisdak', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo-text p {
+    margin: 0;
+    font-family: 'glacial', sans-serif;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Form Styles */
+form {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'glacial', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1rem;
+    font-family: 'Bisdak', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+p {
+    color: #666;
+    font-family: 'glacial', sans-serif;
+}
+
+/* Form Outline */
+.form-outline {
+    margin-bottom: 20px;
+}
+
+.form-outline .form-label {
+    font-weight: bold;
+    font-family: 'glacial', sans-serif;
+}
+
+/* Input Fields */
+input{
+    border: solid 3px;
+    box-sizing: border-box;
+    transition: none;
+    border-radius: 4px;
+    padding: 20px;
+    width: 100%; /* Use 100% width to make sure it adapts to the container's width */
+    max-width: 600px; /* Set a max width to prevent shrinking */
+    font-size: 14px;
+    font-family: 'glacial', sans-serif;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    margin-right: 5px;
+    width: 18px;
+    height: 18px;
+    accent-color: #FFB921;
+}
+
+.form-label {
+    font-size: 14px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+button.back-home {
+    background-color: #007bff;
+    opacity: 0.9;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+button.back-home:hover {
+    background-color: #0056b3;
+    opacity: 1;
+}
+
+button.submit-btn {
+    background-color: #FFB921;
+}
+
+button.submit-btn:hover {
+    background-color: #966f1b;
+}
+
+/* buttons Styles */
+#loginForm button,
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'bantayog', sans-serif;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    text-align: center;
+}
+
+#loginForm button:hover {
+    background-color: #966f1b;
+}
+
+#loginForm button:active {
+    background-color: #966f1b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.form-control-lg {
+    font-size: 18px;
+}
+
+#spinner-box{
+    display: none;
+}

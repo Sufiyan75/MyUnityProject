@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "styles/dashboard.css" %}">
+</head>
+
+<body style="background-color: #f4f2ee;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #263238;">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-3 mb-lg-0 mr-sm-2  align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active d-flex flex-column text-center" aria-current="page" href="#"><i
+                                class="fas fa-comment-dots fa-lg"></i><span class="small">Messaging</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex flex-column text-center" aria-current="page" href="#"><i
+                                class="fas fa-user-friends fa-lg"></i><span class="small">My Network</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex flex-column text-center" aria-current="page" href="#"><i
+                                class="fas fa-briefcase fa-lg"></i><span class="small">Notifications</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex flex-column text-center" aria-current="page" href="#"><i
+                                class="fas fa-bell fa-lg"></i><span class="small">Settings</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <img src="" class="rounded-circle" height="30" alt="" loading="lazy" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              <b>Message: </b>{{message}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </main>
+    <form class="form-inline">
+        <input class="form-control rounded-pill" type="search" placeholder="Search">
+    </form>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <div class="card shadow align-items-center">
+                    <div class="card-body">
+                        <img src="" class="img-fluid rounded-circle mb-2" alt="Profile Picture">
+                        <h5 class="card-title text-center">{{username}}</h5>
+                        <p class="card-text text-center">Quick Learner</p>
+                        <a href="{% url "handleLogout" %}" class="btn btn-primary btn-block">Logout</a>
+                        <a href="profile.html" class="btn btn-primary btn-block">View Profile</a>
+                    </div>
+                </div>
+                <div class="card mt-3 shadow">
+                    <div class="card-header">
+                        <h6>Projects</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Project 1</li>
+                        <li class="list-group-item">Project 2</li>
+                        <li class="list-group-item">Project 3</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form class="input-group" style="width: 820px">
+                    <input type="search" class="form-control" placeholder="Type query" aria-label="Search" />
+                    <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark"
+                        style="padding: .45rem 1.5rem .35rem;">
+                        Search
+                    </button>
+                </form>
+                <div class="card mt-3 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Title</h5>
+                        <p class="card-text">Post content goes here...</p>
+                        <button class="btn btn-primary">Like</button>
+                        <button class="btn btn-secondary">Comment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+
+</html>

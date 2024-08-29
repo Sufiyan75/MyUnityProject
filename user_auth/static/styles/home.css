@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    background-color: #FFFBE5;
+    color: #212121;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #263238;
+    color: #FFFBE5;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.location {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.account {
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.login {
+    background-color: #F5A623;
+    color: #212121;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+main {
+    /* margin-top: 20px; */
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+button {
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #F5A623;
+    color: #212121;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.logo{
+    height: 50px;
+}
+
+.messages b{
+    color: red;
+}
+
+a{
+    text-decoration: none;
+}

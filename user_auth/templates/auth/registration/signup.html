@@ -1,0 +1,115 @@
+{% extends "auth/registration/base.html" %}
+
+{% block title %}Registration{% endblock title %}
+
+
+{% block registerForm %}
+ <!-- Message Section -->
+ <div class="container mb-4">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <b>Message: </b>{{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<form action="{% url "handleSignup" %}" method="post" id="registerForm">
+  {% csrf_token %}
+    <script>
+      function lowerString(input) {
+        input.value = input.value.toLowerCase();
+      }
+      function upperString(input) {
+        input.value = input.value.toUpperCase();
+      }
+    </script>
+
+    <!-- Step 1 -->
+    <div class="form-step step-1" style="display: block;">
+      <div class="text-left my-3">
+        <h1 style="font-size: 0.7rem;">Login Credentails</h1>
+      </div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="username" name="username" placeholder="Username" onkeyup="lowerString(this)" onkeypress="return(event.charCode != 32)" required>
+      <div class="error-message" id="usernameError"></div>
+      <input type="password" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" class="form-control" id="password" name="password" placeholder="Password" onkeypress="return(event.charCode != 32)" required>
+      <div class="error-message" id="passwordError"></div>
+      <input type="password" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onkeypress="return(event.charCode != 32)" required>
+      <div class="error-message" id="confirmPasswordError"></div>
+      <div class="checkbox-container">
+        <input type="checkbox" onclick="show()" class="check mx-2" id="showPassword">
+        <label for="showPassword">Show Password</label>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step step-2" style="display: none;">
+      <div class="text-left my-3">
+        <h1 style="font-size: 0.7rem;">Personal Details</h1>
+      </div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="firstName" name="first_name" onkeyup="upperString(this)" placeholder="First Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32)" required>
+      <div class="error-message" id="firstNameError"></div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="middleName" name="middle_name" onkeyup="upperString(this)"  placeholder="Middle Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32)">
+      <div class="error-message" id="middleNameError"></div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="lastName" name="last_name" onkeyup="lowerString(this)" placeholder="Last Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32)" required>
+      <div class="error-message" id="lastNameError"></div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step step-3" style="display: none;">
+      <div class="text-left my-3">
+        <h1 style="font-size: 0.7rem;">Contact Details</h1>
+      </div>
+      <input type="email" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="email" name="email" placeholder="Email" onkeyup="lowerString(this)" onkeypress="return(event.charCode != 32)" required>
+      <div class="error-message" id="emailError"></div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="mobile" name="mobile" placeholder="Mobile" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+      <div class="error-message" id="mobileError"></div>
+      <input type="date" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="dob" name="dob" placeholder="Date of Birth" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+      <div class="error-message" id="dobError"></div>
+      <select id="gender" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div class="error-message" id="genderError"></div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="form-step step-4" style="display: none;">
+      <div class="text-left my-3">
+        <h1 style="font-size: 0.7rem;">Education & Professional Details</h1>
+      </div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="skills" name="skills" placeholder="Skills" required>
+      <div class="error-message" id="skillsError"></div>
+      <input type="text" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" id="hobby" name="hobby" placeholder="Hobby" required>
+      <div class="error-message" id="hobbyError"></div>
+      <textarea id="educationDetails" style="border: solid 3px;" class="rounded-pill form-control form-control-lg" name="education_details" placeholder="Education Details"
+        required></textarea>
+      <div class="error-message" id="educationDetailsError"></div>
+    </div>
+
+    <div class="slider">
+      <div class="slider-bar">
+        <div id="sliderProgress" class="slider-progress"></div>
+      </div>
+      <div class="slider-steps">
+        <div class="step">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+      </div>
+    </div>
+
+
+    <div class="buttons-container">
+      <button class="back-home" type="button" onclick="window.location.href='/'" style="display: none;">Back</button>
+      <button class="previous" type="button" disabled>Previous</button>
+      <button class="next" type="button">Next</button>
+      <button class="submit-btn" type="submit" style="display: none;">Submit</button>
+    </div>
+</form>
+
+
+{% endblock registerForm %}

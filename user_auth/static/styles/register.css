@@ -1,0 +1,255 @@
+@font-face {
+    font-family: Bisdak;
+    src: url("../fonts/bisdak/Bisdak.ttf");
+}
+
+@font-face {
+    font-family: bantayog;
+    src: url("../fonts/bantayog/Bantayog-Semilight.otf");
+}
+
+@font-face {
+    font-family: glacial;
+    src: url("../fonts/glacial-indifference/GlacialIndifference-Regular.otf");
+}
+
+/* General Body Style */
+body {
+    font-family: 'glacial', sans-serif; /* Update font family */
+    background-color: #FFFDE4; /* Match background color from login.css */
+    margin: 0;
+    padding: 0;
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For WebKit browsers (Safari, Chrome) */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+/* Logo Styles */
+.logo-img {
+    width: 100px; /* Match logo size from login.css */
+    height: 60px;
+}
+
+.logo-text h2 {
+    margin: 0;
+    font-size: 1rem; /* Match font size */
+    font-family: 'Bisdak', sans-serif; /* Match font family */
+    font-weight: bold;
+    color: #333;
+}
+
+.logo-text p {
+    margin: 0;
+    font-family: 'glacial', sans-serif; /* Match font family */
+    color: #666;
+}
+
+/* Heading and Paragraphs */
+h1 {
+    font-size: 1rem; /* Adjust to match h2 from login.css */
+    font-family: 'Bisdak', sans-serif; /* Match font family */
+    font-weight: bold;
+    color: #333;
+}
+
+p {
+    color: #666;
+    font-family: 'glacial', sans-serif; /* Match font family */
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'glacial', sans-serif; /* Match font family */
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Password Hint */
+.password-hint {
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* Form Group Label */
+.form-group label {
+    color: #333;
+    font-family: 'glacial', sans-serif; /* Match font family */
+}
+
+/* Button Styles */
+.btn-warning {
+    background-color: #FFB921; /* Match button color from login.css */
+    border: none;
+    color: #000; /* Text color for better contrast */
+    font-family: 'bantayog', sans-serif; /* Match font family */
+    border-radius: 15px; /* Match button border radius */
+    box-shadow: 0 9px #999; /* Match button shadow */
+    text-align: center; /* Center text */
+}
+
+.btn-warning:hover {
+    background-color: #e3ff41; /* Match hover color */
+    box-shadow: 0 5px #666;
+}
+
+.btn-warning:active {
+    background-color: #e3ff41; /* Match active color */
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/* Slider Styles */
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-bar {
+    width: 100%;
+    height: 15px;
+    background-color: #e0e0e0;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.slider-progress {
+    height: 100%;
+    width: 0;
+    background-color: #FFB921; /* Match slider color */
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.slider-steps {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.step {
+    width: 20px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+}
+
+.step.active {
+    background-color: #FFB921; /* Match active step color */
+}
+
+/* Button Container */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#registerForm button {
+    padding: 10px 20px;
+    border: none;
+    color: #000; /* Text color to match login.css */
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'bantayog', sans-serif; /* Match font family */
+    border-radius: 15px; /* Match button border radius */
+    box-shadow: 0 9px #999; /* Match button shadow */
+    text-align: center; /* Center text */
+}
+
+button.previous {
+    background-color: #FFB921;
+}
+
+button.previous:hover {
+    background-color: #966f1b; /* Darker green for hover effect */
+}
+
+button.next {
+    background-color: #FFB921; /* Match next button color */
+}
+
+button.next:hover {
+    background-color: #966f1b; /* Darker green for hover effect */
+}
+
+button.submit-btn {
+    background-color: #2dec59; /* Green for submit button */
+}
+
+button.submit-btn:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+button.back-home {
+    background-color: #007bff; /* Blue background for Back to Home Page button */
+    opacity: 0.9; /* Increase opacity to make it more visible */
+    transition: background-color 0.3s, opacity 0.3s; /* Smooth transition effects */
+}
+
+button.back-home:hover {
+    background-color: #0056b3; /* Darker blue for hover effect */
+    opacity: 1; /* Full opacity on hover */
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Checkbox Styles */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: #FFB921; /* Match checkbox color */
+}
+
+.checkbox-container label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    font-family: 'glacial', sans-serif; /* Match font family */
+}
+
+.checkbox-container label:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+/* Form Inputs */
+.form-step input,
+.form-step select,
+.form-step textarea {
+    margin-bottom: 20px;
+    width: 100%; /* Ensure full width */
+    max-width: 600px; /* Adjust max-width to match login.css */
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px; /* Ensure text size matches other text */
+    font-family: 'glacial', sans-serif; /* Match font family */
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
