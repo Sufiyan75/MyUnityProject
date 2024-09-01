@@ -81,28 +81,6 @@ a:hover {
     font-family: 'glacial', sans-serif; /* Match font family */
 }
 
-/* Button Styles */
-.btn-warning {
-    background-color: #FFB921; /* Match button color from login.css */
-    border: none;
-    color: #000; /* Text color for better contrast */
-    font-family: 'bantayog', sans-serif; /* Match font family */
-    border-radius: 15px; /* Match button border radius */
-    box-shadow: 0 9px #999; /* Match button shadow */
-    text-align: center; /* Center text */
-}
-
-.btn-warning:hover {
-    background-color: #e3ff41; /* Match hover color */
-    box-shadow: 0 5px #666;
-}
-
-.btn-warning:active {
-    background-color: #e3ff41; /* Match active color */
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
 /* Slider Styles */
 .slider {
     display: flex;
@@ -117,6 +95,7 @@ a:hover {
     position: relative;
     border-radius: 4px;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .slider-progress {
@@ -153,7 +132,8 @@ a:hover {
 .buttons-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px 0;
 }
 
 #registerForm button {
@@ -166,20 +146,30 @@ a:hover {
     border-radius: 15px; /* Match button border radius */
     box-shadow: 0 9px #999; /* Match button shadow */
     text-align: center; /* Center text */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    margin: 5px;
 }
 
-button.previous {
+#registerForm button:hover {
+    background-color: #966f1b; /* Darker color for hover effect */
+    box-shadow: 0 5px #666; /* Slightly reduced shadow for hover effect */
+}
+
+#registerForm button:active {
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
+}
+
+button.previous,
+button.back-home,
+button.clear-btn,
+button.next {
     background-color: #FFB921;
 }
 
-button.previous:hover {
-    background-color: #966f1b; /* Darker green for hover effect */
-}
-
-button.next {
-    background-color: #FFB921; /* Match next button color */
-}
-
+button.previous:hover,
+button.back-home:hover,
+button.clear-btn:hover,
 button.next:hover {
     background-color: #966f1b; /* Darker green for hover effect */
 }
@@ -190,17 +180,6 @@ button.submit-btn {
 
 button.submit-btn:hover {
     background-color: #218838; /* Darker green for hover effect */
-}
-
-button.back-home {
-    background-color: #007bff; /* Blue background for Back to Home Page button */
-    opacity: 0.9; /* Increase opacity to make it more visible */
-    transition: background-color 0.3s, opacity 0.3s; /* Smooth transition effects */
-}
-
-button.back-home:hover {
-    background-color: #0056b3; /* Darker blue for hover effect */
-    opacity: 1; /* Full opacity on hover */
 }
 
 button:disabled {
@@ -227,17 +206,15 @@ button:disabled {
     color: #333;
     cursor: pointer;
     font-family: 'glacial', sans-serif; /* Match font family */
-}
-
-.checkbox-container label:hover {
-    color: #007BFF; /* Change color on hover */
+    display: inline-block;
+    margin-bottom: 0.5rem;
 }
 
 /* Form Inputs */
 .form-step input,
 .form-step select,
 .form-step textarea {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     width: 100%; /* Ensure full width */
     max-width: 600px; /* Adjust max-width to match login.css */
     padding: 10px 20px;
@@ -250,6 +227,41 @@ button:disabled {
 /* Error Message */
 .error-message {
     color: red;
-    font-size: 0.9em;
-    margin-bottom: 15px;
+    font-size: 0.8em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+/* Form Section Styles */
+.form-section {
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+.img-container {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrollbars */
+    padding: 0;
+    margin: 0;
+}
+
+/* Base image styles */
+.img-container img {
+    width: 100%; /* Scale image to container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100vh; /* Ensure image does not exceed viewport height */
+    object-fit: cover; /* Ensures the image covers the container */
+}
+
+@media (max-width: 991px) {
+    .img-container {
+        display: none; /* Hide the image on small screens */
+    }
+    button {
+        font-size: 14px; /* Slightly reduce font size */
+        padding: 12px; /* Adjust padding */
+        margin: 5px 0; /* Add margin to prevent overlap */
+    }
 }

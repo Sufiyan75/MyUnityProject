@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         valid = false;
       }
-      
+
       // Additional validation for password confirmation
       if (input.id === 'confirmPassword') {
         const password = document.getElementById('password').value;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if(username === password){
+    if (username && password && username === password) {
       document.getElementById('usernameError').innerText = "Username and password cannot be the same";
       document.getElementById('passwordError').innerText = "Username and password cannot be the same";
       valid = false;
@@ -106,6 +106,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
     localStorage.removeItem('formData');
     localStorage.removeItem('currentStep');
   }
+  
+  function clearCurrentStep() {
+    const currentFormStep = formSteps[currentStep - 1];
+    const inputs = currentFormStep.querySelectorAll('input, select, textarea');
+
+    inputs.forEach(input => {
+      input.value = '';
+    });
+
+    // Also update the localStorage to reflect the cleared data
+    saveDataToLocalStorage();
+  }
+
+  // Add event listeners to all clear buttons
+  document.querySelector('.clear-btn').addEventListener('click', () => {
+    clearCurrentStep(); // Clear data for the current step only
+  });
 
   nextBtn.addEventListener('click', () => {
     if (validateStep()) {

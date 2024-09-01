@@ -36,6 +36,9 @@ body.bg {
     margin: 0;
     padding: 0;
     font-family: 'glacial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Logo Container */
@@ -69,7 +72,12 @@ body.bg {
 
 /* Form Styles */
 form {
-    width: 100%;
+    max-width: 100%;
+}
+
+.form-container {
+    max-width: 100%; /* Ensure it fits within the viewport width */
+    padding: 0 15px; /* Add padding for small screens */
 }
 
 a {
@@ -115,17 +123,32 @@ input{
     max-width: 600px; /* Set a max width to prevent shrinking */
     font-size: 14px;
     font-family: 'glacial', sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 /* Checkbox Styles */
-input[type="checkbox"] {
-    margin-right: 5px;
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
     width: 18px;
     height: 18px;
-    accent-color: #FFB921;
+    accent-color: #FFB921; /* Match checkbox color */
+}
+
+.checkbox-container label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    font-family: 'glacial', sans-serif; /* Match font family */
+    display: inline-block;
+    margin-bottom: 1.1rem;
 }
 
 .form-label {
@@ -139,26 +162,17 @@ input[type="checkbox"] {
     margin-bottom: 30px;
 }
 
-button.back-home {
-    background-color: #007bff;
-    opacity: 0.9;
-    transition: background-color 0.3s, opacity 0.3s;
-}
-
-button.back-home:hover {
-    background-color: #0056b3;
-    opacity: 1;
-}
-
-button.submit-btn {
+button.submit-btn,
+button.back-home  {
     background-color: #FFB921;
 }
 
-button.submit-btn:hover {
+button.submit-btn:hover,
+button.back-home:hover {
     background-color: #966f1b;
 }
 
-/* buttons Styles */
+
 #loginForm button,
 .button-container button {
     padding: 10px 20px;
@@ -170,15 +184,16 @@ button.submit-btn:hover {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 #loginForm button:hover {
     background-color: #966f1b;
+    box-shadow: 0 5px #666;
 }
 
 #loginForm button:active {
-    background-color: #966f1b;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 4px #666;
     transform: translateY(4px);
 }
 
@@ -188,4 +203,25 @@ button.submit-btn:hover {
 
 #spinner-box{
     display: none;
+}
+
+.img-container {
+    height: 100vh;
+    overflow: hidden; 
+    padding: 0;
+    margin: 0;
+}
+
+
+.img-container img {
+    width: 100%; 
+    height: auto;
+    max-height: 100vh;
+    object-fit: cover;
+}
+
+@media (max-width: 991px) {
+    .img-container {
+        display: none; 
+    }
 }

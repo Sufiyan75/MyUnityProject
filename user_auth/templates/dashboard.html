@@ -67,7 +67,7 @@
                 <div class="card shadow align-items-center">
                     <div class="card-body">
                         <img src="" class="img-fluid rounded-circle mb-2" alt="Profile Picture">
-                        <h5 class="card-title text-center">{{username}}</h5>
+                        <h5 class="card-title text-center">{{user_details.first_name}} {{user_details.last_name}}</h5>
                         <p class="card-text text-center">Quick Learner</p>
                         <a href="{% url "handleLogout" %}" class="btn btn-primary btn-block">Logout</a>
                         <a href="profile.html" class="btn btn-primary btn-block">View Profile</a>

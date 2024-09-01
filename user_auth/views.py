@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseForbidden
+from django.utils import timezone
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Registration
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
-from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 
@@ -15,7 +14,6 @@ def home(request):
 def registerDisplay(request):
     return render(request, 'auth/registration/signup.html')
 
-@csrf_protect
 def handleSignup(request):
     if request.method == "POST":
         form_data = request.POST
@@ -36,6 +34,8 @@ def handleSignup(request):
             query = Registration.objects.create(username=username, password=hashed_password, first_name=first_name, middle_name=middle_name, last_name=last_name, email=email, mobile=mobile, dob=dob, gender=gender, skills=skills, hobby=hobby, education_details=education_details)
             query.save()
             myuser = User.objects.create_user(username, email, password)
+            myuser.first_name = first_name
+            myuser.last_name = last_name
             myuser.save()
             messages.success(request, "Your account has been created successfully!")
             return redirect('handleLogin')
@@ -44,20 +44,23 @@ def handleSignup(request):
     return render(request, 'auth/registration/signup.html')
 
 def handleLogin(request):
-    if request.user.is_authenticated:
-        return redirect('dashboard', username=request.user.username)
-    
     if request.method == "POST":
         loginuseremail = request.POST['email']
         loginpassword = request.POST['password']
 
         try:
             user = authenticate(request, username=User.objects.get(email=loginuseremail).username, password=loginpassword)
-            if user is not None:
-                registration_user = Registration.objects.get(email=loginuseremail)
+            registration_user = Registration.objects.get(email=loginuseremail)
+            if user is not None and not user.is_staff:
+                registration_user.last_login = timezone.now()
+                registration_user.save()
                 auth_login(request, user)
                 messages.success(request, "Successfully logged In!")
                 return redirect('dashboard', username=registration_user.username)
+            elif user is not None and user.is_staff:
+                auth_login(request, user)
+                messages.success(request, "Successfully logged In!")
+                return redirect("/admin")
             else:
                 messages.error(request, 'Invalid credentials!')
                 return render(request, 'auth/login.html')
@@ -71,10 +74,17 @@ def handleLogout(request):
     messages.success(request, 'Logged out successfully!')
     return redirect('home')
 
-@login_required
+@login_required(login_url='handleLogin')
 def dashboard(request, username):
-    if not request.user.is_authenticated:
-        return redirect('handleLogin')
     if request.user.username != username:
         return redirect('handleLogin')
-    return render(request, 'dashboard.html', {'username':username})
+    else:
+        try:
+            loggedInUser = get_object_or_404(Registration, username=username)
+            context = {
+                'user_details': loggedInUser,  # Pass the user details to the template
+            }
+            return render(request, 'dashboard.html', context)
+        except Exception as e:
+            messages.error(request, "Something went wrong!")
+            return redirect('handleLogin')

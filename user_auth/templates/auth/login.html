@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
@@ -11,7 +12,8 @@
 <body class="bg">
     <section class="mb-3">
         <div class="container-fluid">
-            <div class="row w100">
+            <div class="row w-100">
+                <!-- Form Column -->
                 <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
                     <div class="px-5 ms-xl-4 mb-4">
                         <div class="logo-container">
@@ -33,20 +35,12 @@
                         {% endfor %}
                         {% endif %}
                     </div>
-
-                    <!-- Spinner -->
-                    <!-- <div id="spinner-box" class="text-center mt-3 not">
-                        <div class="spinner-border" role="status">
-                        </div>
-                    </div> -->
-
                     <!-- Login Form -->
                     <div class="d-flex align-items-center px-5 ms-xl-4">
-                        <form action="{% url "handleLogin" %}" method="POST" style="width: 40rem;" class="needs-validation" id="loginForm">
+                        <form action="{% url "handleLogin" %}" method="POST" style="width: 100%; max-width: 40rem;" class="needs-validation" id="loginForm">
                             {% csrf_token %}
                             <h1>Log in</h1>
                             <p>Don't have an account? <a href="{% url "handleSignup" %}" class="link-info">Register here</a></p>
-
                             <div data-mdb-input-init class="form-outline mb-3">
                                 <input style="border: solid 3px;" type="email" id="email" name="email" class="rounded-pill form-control form-control-lg" placeholder="Email" required/>
                                 <div class="invalid-feedback">
@@ -64,29 +58,24 @@
                                 <label for="showPassword">Show Password</label>
                             </div>
                             <div class="buttons-container">
-                                <button class="back-home" class="back" type="button" onclick="window.location.href='/'" style="display: block;">Back</button>
+                                <button class="back-home" type="button" onclick="window.location.href='/'" style="display: block;">Back</button>
                                 <button class="submit-btn" type="submit" style="display: block;">Submit</button>
                             </div>
-                            {% comment %} <div class="text-center pt-1 mb-3">
-                                <button class="rounded-pill btn-lg btn-block w-50 mx-auto" style="background-color: #FFC700;" type="submit">Login</button>
-                            </div> {% endcomment %}
                             <p class="small mb-5 pb-lg-2"><a class="text-muted" href="{% url "password_reset" %}">Forgot Your password?</a></p>
                         </form>
                     </div>
                 </div>
-                <div class="col-sm-6 px-0 d-none d-sm-block">
-                    <img src="{% static "images/enter-login.jpg" %}"
-                        alt="Login image" class="w-100 vh-100 border border-dark" style="object-position: left;">
+                <!-- Image Column -->
+                <div class="col-lg-6 d-none d-lg-block img-container">
+                    <img src="{% static "images/enter-login.jpg" %}" alt="Login image" class="img-fluid">
                 </div>
             </div>
         </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="{% static "scripts/login.js" %}"></script>
-    {% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
 </body>
 </html>
